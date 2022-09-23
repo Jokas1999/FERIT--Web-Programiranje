@@ -1,7 +1,9 @@
-export class Ingredient{
-   
+import { NumberSymbol } from '@angular/common';
 
-    constructor(public name:string,public amount:number){
-        
-    }
+export class Ingredient {
+  constructor(
+    public name: string,
+    public sets: NumberSymbol,
+    public reps: NumberSymbol
+  ) {}
 }
