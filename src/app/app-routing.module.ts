@@ -1,37 +1,42 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
-import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
-import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
-import { RecipesComponent } from "./recipes/recipes.component";
-import { ShopingListComponent } from "./shoping-list/shoping-list.component";
-import { RecipesResolverService } from "./recipes/recipes-resolver.service";
-import { AuthComponent } from "./auth/auth.component";
-import { AuthGuard } from "./auth/auth.guard";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { WorkoutEditComponent } from './workouts/workout-edit/workout-edit.component';
+import { WorkoutDetailComponent } from './workouts/workout-detail/workout-detail.component';
+import { WorkoutStartComponent } from './workouts/workout-start/workout-start.component';
+import { WorkoutsComponent } from './workouts/workouts.component';
+import { ShopingListComponent } from './shoping-list/shoping-list.component';
+import { WorkoutsResolverService } from './workouts/workouts-resolver.service';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: '/recipes', pathMatch: 'full'},
+  { path: '', redirectTo: '/workouts', pathMatch: 'full' },
 
-    {
-        path: 'recipes',
-        component : RecipesComponent,
-        canActivate: [AuthGuard],
-        children:[
-        {path: '',component:RecipeStartComponent},
-        {path: 'new',component:RecipeEditComponent},
-        {path: ':id',component:RecipeDetailComponent,resolve: [RecipesResolverService]},
-        {path: ':id/edit', component:RecipeEditComponent,resolve: [RecipesResolverService]},
-        ]}, 
-    {path: 'shopping-list',component : ShopingListComponent } ,
-    {path: 'auth',component : AuthComponent } 
-    
-
+  {
+    path: 'workouts',
+    component: WorkoutsComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: WorkoutStartComponent },
+      { path: 'new', component: WorkoutEditComponent },
+      {
+        path: ':id',
+        component: WorkoutDetailComponent,
+        resolve: [WorkoutsResolverService],
+      },
+      {
+        path: ':id/edit',
+        component: WorkoutEditComponent,
+        resolve: [WorkoutsResolverService],
+      },
+    ],
+  },
+  { path: 'shopping-list', component: ShopingListComponent },
+  { path: 'auth', component: AuthComponent },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule{
-
-}
+export class AppRoutingModule {}

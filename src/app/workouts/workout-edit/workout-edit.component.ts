@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { RecipeService } from '../recipe.service';
+import { WorkoutService } from '../workout.service';
 
 @Component({
-  selector: 'app-recipe-added',
-  templateUrl: './recipe-edit.component.html',
-  styleUrls: ['./recipe-added.component.css'],
+  selector: 'app-workout-added',
+  templateUrl: './workout-edit.component.html',
+  styleUrls: ['./workout-added.component.css'],
 })
-export class RecipeEditComponent implements OnInit {
+export class WorkoutEditComponent implements OnInit {
   id: number;
   editMode = false;
-  recipeForm: FormGroup;
+  workoutForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService,
+    private workoutService: WorkoutService,
     private router: Router
   ) {}
 
@@ -29,7 +29,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onDeleteIngredient(index: number) {
-    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+    (<FormArray>this.workoutForm.get('ingredients')).removeAt(index);
   }
 
   onCancel() {
@@ -37,20 +37,20 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onSubmit() {
-    // const newRecipe = new Recipe(
-    //   this.recipeForm.value['name'],
-    //   this.recipeForm.value['description'],
-    //   this.recipeForm.value['imagePath'],
-    //   this.recipeForm.value['ingredients'] )
+    // const newWorkout = new Workout(
+    //   this.workoutForm.value['name'],
+    //   this.workoutForm.value['description'],
+    //   this.workoutForm.value['imagePath'],
+    //   this.workoutForm.value['ingredients'] )
     if (this.editMode) {
-      this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+      this.workoutService.updateWorkout(this.id, this.workoutForm.value);
     } else {
-      this.recipeService.addRecipe(this.recipeForm.value);
+      this.workoutService.addWorkout(this.workoutForm.value);
     }
     this.onCancel();
   }
   onAddIngredient() {
-    (<FormArray>this.recipeForm.get('ingredients')).push(
+    (<FormArray>this.workoutForm.get('ingredients')).push(
       new FormGroup({
         name: new FormControl(null, Validators.required),
         sets: new FormControl(null, [
@@ -66,19 +66,19 @@ export class RecipeEditComponent implements OnInit {
   }
 
   private initForm() {
-    let recipeName = '';
-    let recipeImagePath = '';
-    let recipeDescription = '';
-    let recipeIngredients = new FormArray([]);
+    let workoutName = '';
+    let workoutImagePath = '';
+    let workoutDescription = '';
+    let workoutIngredients = new FormArray([]);
 
     if (this.editMode) {
-      const recipe = this.recipeService.getRecipe(this.id);
-      recipeName = recipe.name;
-      recipeImagePath = recipe.imagePath;
-      recipeDescription = recipe.description;
-      if (recipe['ingredients']) {
-        for (let ingredient of recipe.ingredients) {
-          recipeIngredients.push(
+      const workout = this.workoutService.getWorkout(this.id);
+      workoutName = workout.name;
+      workoutImagePath = workout.imagePath;
+      workoutDescription = workout.description;
+      if (workout['ingredients']) {
+        for (let ingredient of workout.ingredients) {
+          workoutIngredients.push(
             new FormGroup({
               name: new FormControl(ingredient.name, Validators.required),
               sets: new FormControl(ingredient.sets, [
@@ -94,16 +94,16 @@ export class RecipeEditComponent implements OnInit {
         }
       }
     }
-    this.recipeForm = new FormGroup({
-      name: new FormControl(recipeName, Validators.required),
-      imagePath: new FormControl(recipeImagePath, Validators.required),
-      description: new FormControl(recipeDescription, Validators.required),
-      ingredients: recipeIngredients,
+    this.workoutForm = new FormGroup({
+      name: new FormControl(workoutName, Validators.required),
+      imagePath: new FormControl(workoutImagePath, Validators.required),
+      description: new FormControl(workoutDescription, Validators.required),
+      ingredients: workoutIngredients,
     });
   }
 
   get controls() {
     // a getter!
-    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+    return (<FormArray>this.workoutForm.get('ingredients')).controls;
   }
 }

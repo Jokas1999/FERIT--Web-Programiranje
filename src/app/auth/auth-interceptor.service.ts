@@ -23,7 +23,7 @@ export class AuthInterceptorService implements HttpInterceptor {
           return next.handle(req);
         }
         const modifiedReq = req.clone({
-          url: req.url.replace('recipes.json', user.id + '/recipes.json'),
+          url: req.url.replace('workouts.json', user.id + '/workouts.json'),
           params: new HttpParams().set('auth', user.token),
         });
 

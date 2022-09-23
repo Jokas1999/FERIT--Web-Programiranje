@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Recipe } from '../recipes/recipe.model';
-import { RecipeService } from '../recipes/recipe.service';
+import { Workout } from '../workouts/workout.model';
+import { WorkoutService } from '../workouts/workout.service';
 import { exhaustMap, map, take, tap } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
@@ -9,37 +9,37 @@ import { AuthService } from '../auth/auth.service';
 export class DataStorageService {
   constructor(
     private http: HttpClient,
-    private recipeService: RecipeService,
+    private workoutService: WorkoutService,
     private authService: AuthService
   ) {}
 
-  storeRecipes() {
-    const recipes = this.recipeService.getRecipes();
+  storeWorkouts() {
+    const workouts = this.workoutService.getWorkouts();
     return this.http
       .put(
-        'https://ng-course-recipe-book-62567-default-rtdb.firebaseio.com/recipes.json',
-        recipes
+        'https://ng-course-recipe-book-62567-default-rtdb.firebaseio.com/workouts.json',
+        workouts
       )
       .subscribe((response) => {
         console.log(response);
       });
   }
-  fetchRecipes() {
+  fetchWorkouts() {
     return this.http
-      .get<Recipe[]>(
-        'https://ng-course-recipe-book-62567-default-rtdb.firebaseio.com/recipes.json'
+      .get<Workout[]>(
+        'https://ng-course-recipe-book-62567-default-rtdb.firebaseio.com/workouts.json'
       )
       .pipe(
-        map((recipes) => {
-          return recipes.map((recipe) => {
+        map((workouts) => {
+          return workouts.map((workout) => {
             return {
-              ...recipe,
-              ingredients: recipe.ingredients ? recipe.ingredients : [],
+              ...workout,
+              ingredients: workout.ingredients ? workout.ingredients : [],
             };
           });
         }),
-        tap((recipes) => {
-          this.recipeService.setRecipes(recipes);
+        tap((workouts) => {
+          this.workoutService.setWorkouts(workouts);
         })
       );
   }

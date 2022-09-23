@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { RecipeService } from '../recipes/recipe.service';
+import { WorkoutService } from '../workouts/workout.service';
 import { AuthResponseData, AuthService } from './auth.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class AuthComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private recipeService: RecipeService
+    private workoutService: WorkoutService
   ) {}
 
   onSwitchMode() {
@@ -44,9 +44,9 @@ export class AuthComponent {
     authObs.subscribe(
       (resData) => {
         console.log(resData);
-        this.recipeService.setRecipes([]);
+        this.workoutService.setWorkouts([]);
         this.isLoading = false;
-        this.router.navigate(['/recipes']);
+        this.router.navigate(['/workouts']);
       },
       (errorMessage) => {
         console.log(errorMessage);
