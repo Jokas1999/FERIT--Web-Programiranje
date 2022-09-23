@@ -1,6 +1,6 @@
 import { NumberSymbol } from '@angular/common';
 
-export class Ingredient {
+export class Exercise {
   constructor(
     public name: string,
     public sets: NumberSymbol,

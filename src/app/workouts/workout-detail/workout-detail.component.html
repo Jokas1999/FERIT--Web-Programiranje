@@ -21,8 +21,8 @@
       </button>
       <ul class="dropdown-menu">
         <li>
-          <a style="cursor: pointer" (click)="OnAddToShoppingList()"
-            >To Shoping list</a
+          <a style="cursor: pointer" (click)="OnAddToexerciseList()"
+            >To Exercise list</a
           >
         </li>
         <li style="cursor: pointer"><a (click)="onEditWorkout()">Edit</a></li>
@@ -41,11 +41,8 @@
 <div class="row">
   <div class="col-xs-12">
     <ul class="list-group">
-      <li
-        class="list-group-item"
-        *ngFor="let ingredient of workout.ingredients"
-      >
-        {{ ingredient.name }} {{ ingredient.sets }}x{{ ingredient.reps }}
+      <li class="list-group-item" *ngFor="let exercise of workout.exercises">
+        {{ exercise.name }} {{ exercise.sets }}x{{ exercise.reps }}
       </li>
     </ul>
   </div>

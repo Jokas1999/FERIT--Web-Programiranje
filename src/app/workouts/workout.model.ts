@@ -1,20 +1,20 @@
-import { Ingredient } from '../shared/ingredient.model';
+import { Exercise } from '../shared/exercise.model';
 
 export class Workout {
   public name: string;
   public description: string;
   public imagePath: string;
-  public ingredients: Ingredient[];
+  public exercises: Exercise[];
 
   constructor(
     name: string,
     description: string,
     imagePath: string,
-    ingredients: Ingredient[]
+    exercises: Exercise[]
   ) {
     this.name = name;
     this.description = description;
     this.imagePath = imagePath;
-    this.ingredients = ingredients;
+    this.exercises = exercises;
   }
 }

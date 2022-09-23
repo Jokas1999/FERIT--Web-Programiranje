@@ -34,7 +34,7 @@ export class DataStorageService {
           return workouts.map((workout) => {
             return {
               ...workout,
-              ingredients: workout.ingredients ? workout.ingredients : [],
+              exercises: workout.exercises ? workout.exercises : [],
             };
           });
         }),

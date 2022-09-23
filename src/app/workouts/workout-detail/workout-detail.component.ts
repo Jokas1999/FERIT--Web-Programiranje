@@ -26,8 +26,8 @@ export class WorkoutDetailComponent implements OnInit {
     });
   }
 
-  OnAddToShoppingList() {
-    this.workoutService.addIngredientsToShoppingList(this.workout.ingredients);
+  OnAddToexerciseList() {
+    this.workoutService.addExercisesToexerciseList(this.workout.exercises);
   }
 
   onEditWorkout() {

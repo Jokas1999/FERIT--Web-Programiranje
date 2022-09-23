@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Ingredient } from '../shared/ingredient.model';
-import { ShopingListService } from '../shoping-list/shoping-list.service';
+import { Exercise } from '../shared/exercise.model';
+import { ExerciseListService } from '../exercise-list/exercise-list.service';
 import { Workout } from './workout.model';
 
 @Injectable()
 export class WorkoutService {
   workoutsChanged = new Subject<Workout[]>();
 
-  constructor(private slService: ShopingListService) {}
+  constructor(private slService: ExerciseListService) {}
 
   // private workouts : Workout[] = [
   //   new Workout('hamburger','smrdi','https://d17zv3ray5yxvp.cloudfront.net/variants/7YnS5o8P9mMqndQuBHrFqrdm/57ed05bea98bceae5f0eaada26b69cee6c61471d3030f7123d212844a35eba04'
   //   ,[
-  //     new Ingredient('meat',1),
-  //     new Ingredient('ranch',1)
+  //     new Exercise('meat',1),
+  //     new Exercise('ranch',1)
   //   ]),
   //   new Workout('cheesburger','smrdi','https://d17zv3ray5yxvp.cloudfront.net/variants/7YnS5o8P9mMqndQuBHrFqrdm/57ed05bea98bceae5f0eaada26b69cee6c61471d3030f7123d212844a35eba04'
   //   ,[
-  //     new Ingredient('Salat',1),
-  //     new Ingredient('meat',2)
+  //     new Exercise('Salat',1),
+  //     new Exercise('meat',2)
   //   ])
   // ];
 
@@ -37,8 +37,8 @@ export class WorkoutService {
     return this.workouts[index];
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.slService.addIngredients(ingredients);
+  addExercisesToexerciseList(exercises: Exercise[]) {
+    this.slService.addExercises(exercises);
   }
 
   addWorkout(workout: Workout) {

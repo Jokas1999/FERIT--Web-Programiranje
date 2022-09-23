@@ -62,10 +62,10 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12" formArrayName="ingredients">
+        <div class="col-xs-12" formArrayName="exercises">
           <div
             class="row"
-            *ngFor="let ingredientCtrl of controls; let i = index"
+            *ngFor="let exerciseCtrl of controls; let i = index"
             [formGroupName]="i"
             style="margin-top: 10px"
           >
@@ -90,7 +90,7 @@
               <button
                 type="button"
                 class="btn btn-danger"
-                (click)="onDeleteIngredient(i)"
+                (click)="onDeleteExercise(i)"
               >
                 X
               </button>
@@ -103,9 +103,9 @@
                 type="button"
                 class="btn btn-success"
                 t
-                (click)="onAddIngredient()"
+                (click)="onAddExercise()"
               >
-                Add Ingredient
+                Add Exercise
               </button>
             </div>
           </div>

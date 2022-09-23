@@ -28,8 +28,8 @@ export class WorkoutEditComponent implements OnInit {
     });
   }
 
-  onDeleteIngredient(index: number) {
-    (<FormArray>this.workoutForm.get('ingredients')).removeAt(index);
+  onDeleteExercise(index: number) {
+    (<FormArray>this.workoutForm.get('exercises')).removeAt(index);
   }
 
   onCancel() {
@@ -41,7 +41,7 @@ export class WorkoutEditComponent implements OnInit {
     //   this.workoutForm.value['name'],
     //   this.workoutForm.value['description'],
     //   this.workoutForm.value['imagePath'],
-    //   this.workoutForm.value['ingredients'] )
+    //   this.workoutForm.value['exercises'] )
     if (this.editMode) {
       this.workoutService.updateWorkout(this.id, this.workoutForm.value);
     } else {
@@ -49,8 +49,8 @@ export class WorkoutEditComponent implements OnInit {
     }
     this.onCancel();
   }
-  onAddIngredient() {
-    (<FormArray>this.workoutForm.get('ingredients')).push(
+  onAddExercise() {
+    (<FormArray>this.workoutForm.get('exercises')).push(
       new FormGroup({
         name: new FormControl(null, Validators.required),
         sets: new FormControl(null, [
@@ -69,23 +69,23 @@ export class WorkoutEditComponent implements OnInit {
     let workoutName = '';
     let workoutImagePath = '';
     let workoutDescription = '';
-    let workoutIngredients = new FormArray([]);
+    let workoutExercises = new FormArray([]);
 
     if (this.editMode) {
       const workout = this.workoutService.getWorkout(this.id);
       workoutName = workout.name;
       workoutImagePath = workout.imagePath;
       workoutDescription = workout.description;
-      if (workout['ingredients']) {
-        for (let ingredient of workout.ingredients) {
-          workoutIngredients.push(
+      if (workout['exercises']) {
+        for (let exercise of workout.exercises) {
+          workoutExercises.push(
             new FormGroup({
-              name: new FormControl(ingredient.name, Validators.required),
-              sets: new FormControl(ingredient.sets, [
+              name: new FormControl(exercise.name, Validators.required),
+              sets: new FormControl(exercise.sets, [
                 Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/),
               ]),
-              reps: new FormControl(ingredient.reps, [
+              reps: new FormControl(exercise.reps, [
                 Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/),
               ]),
@@ -98,12 +98,12 @@ export class WorkoutEditComponent implements OnInit {
       name: new FormControl(workoutName, Validators.required),
       imagePath: new FormControl(workoutImagePath, Validators.required),
       description: new FormControl(workoutDescription, Validators.required),
-      ingredients: workoutIngredients,
+      exercises: workoutExercises,
     });
   }
 
   get controls() {
     // a getter!
-    return (<FormArray>this.workoutForm.get('ingredients')).controls;
+    return (<FormArray>this.workoutForm.get('exercises')).controls;
   }
 }

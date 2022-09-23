@@ -8,11 +8,11 @@ import { WorkoutsComponent } from './workouts/workouts.component';
 import { WorkoutListComponent } from './workouts/workout-list/workout-list.component';
 import { WorkoutDetailComponent } from './workouts/workout-detail/workout-detail.component';
 import { WorkoutItemComponent } from './workouts/workout-list/workout-item/workout-item.component';
-import { ShopingListComponent } from './shoping-list/shoping-list.component';
-import { ShopingEditComponent } from './shoping-list/shoping-edit/shoping-edit.component';
+import { ExerciseListComponent } from './exercise-list/exercise-list.component';
+import { ExerciseEditComponent } from './exercise-list/exercise-edit/exercise-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { ShopingListService } from './shoping-list/shoping-list.service';
+import { ExerciseListService } from './exercise-list/exercise-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { WorkoutStartComponent } from './workouts/workout-start/workout-start.component';
 import { WorkoutEditComponent } from './workouts/workout-edit/workout-edit.component';
@@ -30,8 +30,8 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     WorkoutListComponent,
     WorkoutDetailComponent,
     WorkoutItemComponent,
-    ShopingListComponent,
-    ShopingEditComponent,
+    ExerciseListComponent,
+    ExerciseEditComponent,
     DropdownDirective,
     WorkoutStartComponent,
     WorkoutEditComponent,
@@ -46,7 +46,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     HttpClientModule,
   ],
   providers: [
-    ShopingListService,
+    ExerciseListService,
     WorkoutService,
     {
       provide: HTTP_INTERCEPTORS,
