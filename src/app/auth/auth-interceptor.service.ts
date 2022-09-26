@@ -27,7 +27,7 @@ export class AuthInterceptorService implements HttpInterceptor {
           params: new HttpParams().set('auth', user.token),
         });
 
-        debugger;
+        // debugger;
         console.log(modifiedReq.body);
         return next.handle(modifiedReq);
       })

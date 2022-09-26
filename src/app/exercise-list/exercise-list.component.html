@@ -9,7 +9,8 @@
         *ngFor="let exercise of exercises; let i = index"
         (click)="onEditItem(i)"
       >
-        {{ exercise.name }} {{ exercise.sets }} x {{ exercise.reps }}
+        {{ exercise.name }} &ensp; {{ exercise.sets }} Sets x
+        {{ exercise.reps }} Reps
       </a>
     </ul>
   </div>

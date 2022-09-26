@@ -70,9 +70,11 @@
             style="margin-top: 10px"
           >
             <div class="col-xs-6">
+              <label for="name">Name</label>
               <input type="text" class="form-control" formControlName="name" />
             </div>
             <div class="col-xs-2">
+              <label for="sets">Sets</label>
               <input
                 type="number"
                 class="form-control"
@@ -80,6 +82,7 @@
               />
             </div>
             <div class="col-xs-2">
+              <label for="reps">Reps</label>
               <input
                 type="number"
                 class="form-control"
@@ -90,6 +93,7 @@
               <button
                 type="button"
                 class="btn btn-danger"
+                style="margin-top: 20px"
                 (click)="onDeleteExercise(i)"
               >
                 X
