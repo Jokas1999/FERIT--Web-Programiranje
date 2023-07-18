@@ -24,7 +24,7 @@ export class AuthService implements OnInit {
   signup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCzahPE87oXBLfKmMuOyUzW68xBYDurMl4',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyByahXVklw8M1JtOs9ZsSuheF48rjet_1c',
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
@@ -43,7 +43,7 @@ export class AuthService implements OnInit {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCzahPE87oXBLfKmMuOyUzW68xBYDurMl4',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyByahXVklw8M1JtOs9ZsSuheF48rjet_1c',
         {
           email: email,
           password: password,

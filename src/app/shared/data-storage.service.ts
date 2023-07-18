@@ -17,7 +17,7 @@ export class DataStorageService {
     const workouts = this.workoutService.getWorkouts();
     return this.http
       .put(
-        'https://ng-course-recipe-book-62567-default-rtdb.firebaseio.com/workouts.json',
+        'https://workoutapp-1dd19-default-rtdb.europe-west1.firebasedatabase.app/workouts.json',
         workouts
       )
       .subscribe((response) => {
@@ -27,7 +27,7 @@ export class DataStorageService {
   fetchWorkouts() {
     return this.http
       .get<Workout[]>(
-        'https://ng-course-recipe-book-62567-default-rtdb.firebaseio.com/workouts.json'
+        'https://workoutapp-1dd19-default-rtdb.europe-west1.firebasedatabase.app/workouts.json'
       )
       .pipe(
         map((workouts) => {

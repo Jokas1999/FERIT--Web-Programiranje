@@ -10,20 +10,10 @@ export class WorkoutService {
 
   constructor(private slService: ExerciseListService) {}
 
-  // private workouts : Workout[] = [
-  //   new Workout('hamburger','smrdi','https://d17zv3ray5yxvp.cloudfront.net/variants/7YnS5o8P9mMqndQuBHrFqrdm/57ed05bea98bceae5f0eaada26b69cee6c61471d3030f7123d212844a35eba04'
-  //   ,[
-  //     new Exercise('meat',1),
-  //     new Exercise('ranch',1)
-  //   ]),
-  //   new Workout('cheesburger','smrdi','https://d17zv3ray5yxvp.cloudfront.net/variants/7YnS5o8P9mMqndQuBHrFqrdm/57ed05bea98bceae5f0eaada26b69cee6c61471d3030f7123d212844a35eba04'
-  //   ,[
-  //     new Exercise('Salat',1),
-  //     new Exercise('meat',2)
-  //   ])
-  // ];
+ 
 
   private workouts: Workout[] = [];
+  
   setWorkouts(workouts: Workout[]) {
     this.workouts = workouts;
     this.workoutsChanged.next(this.workouts.slice());

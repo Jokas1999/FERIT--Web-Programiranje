@@ -37,11 +37,7 @@ export class WorkoutEditComponent implements OnInit {
   }
 
   onSubmit() {
-    // const newWorkout = new Workout(
-    //   this.workoutForm.value['name'],
-    //   this.workoutForm.value['description'],
-    //   this.workoutForm.value['imagePath'],
-    //   this.workoutForm.value['exercises'] )
+ 
     if (this.editMode) {
       this.workoutService.updateWorkout(this.id, this.workoutForm.value);
     } else {
